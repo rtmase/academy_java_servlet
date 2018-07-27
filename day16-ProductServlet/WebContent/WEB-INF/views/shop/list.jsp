@@ -22,6 +22,7 @@
 		<th>제품이름</th>
 		<th>가격</th>
 		<th>재고</th>
+		<th></th>
 	</tr>
 <c:if test="${not empty products}">
 	<c:forEach items="${products }" var="product">
@@ -30,8 +31,9 @@
 			<td>
 				<a href="detail?prodCode=${product.prodCode }">${product.prodName }</a>
 			</td>
-			<td>${product.price }</td>
+			<td><fmt:formatNumber value="${product.price }" type="currency" currencySymbol="￦"/></td>
 			<td>${product.quantity }</td>
+			<td><a href="delete?prodCode=${product.prodCode }">삭제</a></td>
 		</tr>
 	</c:forEach>
 </c:if>
@@ -41,6 +43,11 @@
 		<td colspan="4"> 등록된 제품정보가 존재하지 않습니다 </td>
 	</tr>
 </c:if>	
+	<tr>
+		<td colspan="5" style="text-align: right;">
+			<a href="insert">신규 제품 추가</a>
+			<a href="menuJsp">메뉴</a>
+	</tr>
 </table>
 </body>
 </html>
